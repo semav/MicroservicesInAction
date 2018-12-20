@@ -1,14 +1,14 @@
 server:
   port: 8888
 spring:
-  application:
-    name: config-server
   cloud:
     config:
       server:
         git:
           uri: https://github.com/semav/MicroservicesInAction
           search-paths: config
+  application:
+    name: config-server
 management:
   endpoints:
     web:
