@@ -1,10 +1,26 @@
 package semav.licensingservice.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+@Entity
 public class License {
+    @Id
+    @Column(nullable = false)
+    @Size(max = 36)
     private String licenseId;
-    private String productName;
-    private String licenseType;
+
+    @Column(nullable = false)
+    @Size(max = 36)
     private String organizationId;
+
+    @Column(nullable = false)
+    private String productName;
+
+    @Column(nullable = false)
+    private String licenseType;
 
     public String getLicenseId() {
         return licenseId;
