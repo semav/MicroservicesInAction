@@ -5,7 +5,7 @@ spring:
     password: user
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 eureka:
   instance:
     preferIpAddress: true
