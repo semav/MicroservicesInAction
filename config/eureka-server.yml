@@ -2,6 +2,8 @@ server:
   port: 8761
 
 eureka:
+  instance:
+    hostname: localhost
   server:
     enable-self-preservation: false
     waitTimeInMsWhenSyncEmpty: 5
