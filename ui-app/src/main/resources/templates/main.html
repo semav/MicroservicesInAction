@@ -7,12 +7,21 @@
 </head>
 <body>
     <h1>Organisations</h1>
-    <ul>
-        <th:block th:each="license : ${licenses}">
-            <li>
-                <span th:text="${license.licenseId}"> </span>
-            </li>
-        </th:block>
-    </ul>
+
+    <div th:switch="${organisations == null}">
+        <div th:case="true">Organisations data is available</div>
+
+        <table th:case="false">
+            <th:block th:each="organisation : ${organisations}">
+                <tr>
+                    <td th:text="${organisation.id}"> </td>
+                    <td th:text="${organisation.name}"> </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+    <div>
+        <a th:href="@{/organisations/add}">Add new organisation</a>
+    </div>
 </body>
 </html>
