@@ -8,20 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 import semav.licensingservice.entity.License;
 import semav.licensingservice.service.LicenseService;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value="/organizations/{organizationId}/licenses")
+@RequestMapping(value="/licenses")
 public class LicenseServiceController {
 
     @Autowired
     private LicenseService licenseService;
 
-    @GetMapping(value="/{licenseId}")
-    public License getLicenses(
-            @PathVariable("organizationId") String organizationId,
-            @PathVariable("licenseId") String licenseId) {
-
-        return licenseService.getLicense(organizationId, licenseId);
+    @GetMapping()
+    public List<License> getLicenses() {
+        return licenseService.getLicenses();
     }
 }

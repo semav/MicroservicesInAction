@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main page</title>
+</head>
+<body>
+    <h1>Organisations</h1>
+    <ul>
+        <th:block th:each="license : ${licenses}">
+            <li>
+                <span th:text="${license.licenseId}"> </span>
+            </li>
+        </th:block>
+    </ul>
+</body>
+</html>

@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 import semav.licensingservice.entity.License;
 import semav.licensingservice.repository.LicenseRepository;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class LicenseService {
@@ -25,5 +24,11 @@ public class LicenseService {
         license.setLicenseId(UUID.randomUUID().toString());
         license.setOrganizationId(UUID.randomUUID().toString());
         licenseRepository.save(license);
+    }
+
+    public List<License> getLicenses() {
+        List<License> result = new ArrayList<>();
+        licenseRepository.findAll().forEach(result::add);
+        return result;
     }
 }
