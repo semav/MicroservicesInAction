@@ -1,20 +1,16 @@
 package semav.licensingservice.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 public class License {
     @Id
-    @Column(nullable = false)
-    @Size(max = 36)
-    private String licenseId;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
 
     @Column(nullable = false)
-    @Size(max = 36)
-    private String organizationId;
+    private Integer organizationId;
 
     @Column(nullable = false)
     private String productName;
@@ -22,12 +18,20 @@ public class License {
     @Column(nullable = false)
     private String licenseType;
 
-    public String getLicenseId() {
-        return licenseId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLicenseId(String licenseId) {
-        this.licenseId = licenseId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Integer organizationId) {
+        this.organizationId = organizationId;
     }
 
     public String getProductName() {
@@ -44,13 +48,5 @@ public class License {
 
     public void setLicenseType(String licenseType) {
         this.licenseType = licenseType;
-    }
-
-    public String getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
     }
 }

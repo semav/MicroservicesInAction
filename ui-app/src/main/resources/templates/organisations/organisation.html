@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Organisation</title>
+</head>
+<body>
+    <h1>Organisation</h1>
+
+    <div th:switch="${organisation == null}">
+        <div th:case="true">Organisation data is available</div>
+
+        <div th:case="false" th:text="${organisation.name}">
+            Organisation name
+        </div>
+    </div>
+</body>
+</html>

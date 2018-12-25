@@ -11,8 +11,8 @@ public class LicensingService {
     @Autowired
     RestTemplate restTemplate;
 
-    public License[] getLicenses(){
-        ResponseEntity<License[]> responseEntity = restTemplate.getForEntity("http://LICENSING-SERVICE/licenses", License[].class);
+    public License[] getLicenses(int organisationId){
+        ResponseEntity<License[]> responseEntity = restTemplate.getForEntity("http://LICENSING-SERVICE/licenses/{organisationId}", License[].class, organisationId);
         return responseEntity.getBody();
     }
 }

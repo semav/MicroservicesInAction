@@ -13,13 +13,23 @@ public class OrganisationsService {
     @Autowired
     RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod="getNullOrganisation")
+    public Organisation getOrganisation(int id){
+        ResponseEntity<Organisation> responseEntity = restTemplate.getForEntity("http://ORGANISATIONS-SERVICE/organisations/{id}", Organisation.class, id);
+        return responseEntity.getBody();
+    }
+
     @HystrixCommand(fallbackMethod="getNullOrganisations")
     public Organisation[] getOrganisations(){
-        ResponseEntity<Organisation[]> responseEntity = restTemplate.getForEntity("http://ORGANISATIONS-SERVICE/licenses", Organisation[].class);
+        ResponseEntity<Organisation[]> responseEntity = restTemplate.getForEntity("http://ORGANISATIONS-SERVICE/organisations", Organisation[].class);
         return responseEntity.getBody();
     }
 
     public Organisation[] getNullOrganisations(){
+        return null;
+    }
+
+    public Organisation getNullOrganisation(int id){
         return null;
     }
 }
