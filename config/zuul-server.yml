@@ -3,9 +3,6 @@ server:
 zuul:
   ignoredServices: '*'
   routes:
-    organisations:
-      path: /organisations-service/**
-      serviceId: organisations-service
     licensing:
       path: /licensing-service/**
       serviceId: licensing-service
