@@ -2,10 +2,6 @@ server:
   port: 8000
 zuul:
   ignoredServices: '*'
-  routes:
-    licensing:
-      path: /licensing-service/**
-      serviceId: licensing-service
 eureka:
   instance:
     preferIpAddress: true
