@@ -1,7 +1,5 @@
 server:
   port: 8000
-zuul:
-  ignoredServices: '*'
 eureka:
   instance:
     preferIpAddress: true
