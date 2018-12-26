@@ -15,6 +15,3 @@ management:
     web:
       exposure:
         include: '*'
-endpoints:
-  routes:
-    sensitive: false
