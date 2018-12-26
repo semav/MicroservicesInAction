@@ -24,6 +24,6 @@ public class LicenseServiceController {
 
     @GetMapping(value = "/{organisationId}")
     public Iterable<License> getLicenses(@PathVariable int organisationId) {
-        return licenseRepository.
+        return licenseRepository.findByOrganisationId(organisationId);
     }
 }

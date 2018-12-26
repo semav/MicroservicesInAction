@@ -1,7 +1,6 @@
 package semav.licensingservice.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Entity
 public class License {
@@ -10,7 +9,7 @@ public class License {
     private Integer id;
 
     @Column(nullable = false)
-    private Integer organizationId;
+    private Integer organisationId;
 
     @Column(nullable = false)
     private String productName;
@@ -26,12 +25,12 @@ public class License {
         this.id = id;
     }
 
-    public Integer getOrganizationId() {
-        return organizationId;
+    public Integer getOrganisationId() {
+        return organisationId;
     }
 
-    public void setOrganizationId(Integer organizationId) {
-        this.organizationId = organizationId;
+    public void setOrganisationId(Integer organisationId) {
+        this.organisationId = organisationId;
     }
 
     public String getProductName() {

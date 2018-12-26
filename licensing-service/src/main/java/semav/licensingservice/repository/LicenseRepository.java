@@ -6,7 +6,7 @@ import semav.licensingservice.entity.License;
 import java.util.List;
 
 public interface LicenseRepository extends CrudRepository<License, Integer> {
-    //List<License> findByOrganizationId(String organizationId);
+    List<License> findByOrganisationId(Integer organisationId);
     //License findByOrganizationIdAndLicenseId(String organizationId, String licenseId);
 }
 

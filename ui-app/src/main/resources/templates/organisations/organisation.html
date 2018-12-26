@@ -15,5 +15,23 @@
             Organisation name
         </div>
     </div>
+
+    <h2>Licenses</h2>
+
+    <div th:switch="${licenses == null}">
+        <div th:case="true">Licenses data is available</div>
+
+        <div th:case="false">
+            <table>
+                <th:block th:each="license : ${licenses}">
+                    <tr>
+                        <td th:text="${license.id}">Id</td>
+                        <td th:text="${license.licenseType}">Type</td>
+                        <td th:text="${license.productName}">Product name</td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
