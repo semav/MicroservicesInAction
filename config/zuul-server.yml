@@ -2,6 +2,10 @@ server:
   port: 8000
 zuul:
   ignoredServices: '*'
+  routes:
+    book:
+      path: /organisationsservice/**
+      serviceId: organisations-service
 eureka:
   instance:
     preferIpAddress: true
