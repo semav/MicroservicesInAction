@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/licensing-service/licensing-service.iml" filepath="$PROJECT_DIR$/licensing-service/licensing-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/organisations-service/organisations-service.iml" filepath="$PROJECT_DIR$/organisations-service/organisations-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ui-app/ui-app.iml" filepath="$PROJECT_DIR$/ui-app/ui-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul-server/zuul-server.iml" filepath="$PROJECT_DIR$/zuul-server/zuul-server.iml" />
     </modules>
   </component>
 </project>
