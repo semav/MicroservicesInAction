@@ -3,9 +3,12 @@ server:
 zuul:
   ignoredServices: '*'
   routes:
-    book:
-      path: /organisationsservice/**
+    organisations:
+      path: /organisations-service/**
       serviceId: organisations-service
+    licensing:
+      path: /licensing-service/**
+      serviceId: licensing-service
 eureka:
   instance:
     preferIpAddress: true
