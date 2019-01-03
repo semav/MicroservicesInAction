@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/ui-app/pom.xml" />
         <option value="$PROJECT_DIR$/organisations-service/pom.xml" />
         <option value="$PROJECT_DIR$/zuul-server/pom.xml" />
+        <option value="$PROJECT_DIR$/authentication-service/pom.xml" />
       </list>
     </option>
   </component>
