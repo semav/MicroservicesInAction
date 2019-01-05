@@ -1,3 +1,7 @@
 spring:
   application:
     name: organisations-service
+security:
+  oauth2:
+    client:
+      clientId: organisations-service

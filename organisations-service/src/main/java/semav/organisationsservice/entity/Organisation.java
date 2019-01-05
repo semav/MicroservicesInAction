@@ -13,6 +13,8 @@ public class Organisation {
     @Column(nullable = false)
     private String name;
 
+    private License[] licenses;
+
     public Integer getId() {
         return id;
     }
@@ -27,5 +29,13 @@ public class Organisation {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public License[] getLicenses() {
+        return licenses;
+    }
+
+    public void setLicenses(License[] licenses) {
+        this.licenses = licenses;
     }
 }

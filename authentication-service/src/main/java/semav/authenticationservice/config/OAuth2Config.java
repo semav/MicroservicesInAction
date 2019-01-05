@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 @Configuration
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
@@ -16,21 +17,28 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Qualifier("userDetailsServiceBean")
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Override
+    public void configure(
+            AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
+    }
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("eagleeye")
-                .secret("{noop}thisissecret")
+                .withClient("ui-app")
+                .secret("{noop}password")
                 .authorizedGrantTypes(
                         "refresh_token",
                         "password",
                         "client_credentials")
-                .scopes("webclient","mobileclient");
+                .scopes("web");
     }
 
     @Override
-    public void configure(
-    AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
