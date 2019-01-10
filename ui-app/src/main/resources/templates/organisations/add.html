@@ -8,6 +8,12 @@
 <body>
     <h1>Add new organisation</h1>
 
-
+    <form action="#" th:action="@{/organisations/add}" th:object="${organisation}" method="post">
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Submit" />
+    </form>
+    <div>
+        <a th:href="@{/}">Back to list</a>
+    </div>
 </body>
 </html>

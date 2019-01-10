@@ -22,6 +22,8 @@
       <module name="eureka-server" target="1.8" />
       <module name="licensing-service" target="1.8" />
       <module name="organisations-service" target="1.8" />
+      <module name="spring-security-sso-auth-server" target="1.8" />
+      <module name="spring-security-sso-ui" target="1.8" />
       <module name="ui-app" target="1.8" />
       <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>

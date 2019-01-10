@@ -4,4 +4,4 @@ spring:
 security:
   oauth2:
     client:
-      clientId: organisations-service
+      clientId: client

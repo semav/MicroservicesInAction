@@ -8,6 +8,8 @@
 <body>
     <h1>Organisations</h1>
 
+    Welcome, <span th:text="${#authentication.name}">Name</span>
+
     <div th:switch="${organisations == null}">
         <div th:case="true">Organisations data is available</div>
 
@@ -17,6 +19,9 @@
                     <td th:text="${organisation.id}"> </td>
                     <td>
                         <a th:href="@{/organisation(id=${organisation.id})}" th:text="${organisation.name}">Organisation name</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/delete(id=${organisation.id})}">Delete</a>
                     </td>
                 </tr>
             </th:block>

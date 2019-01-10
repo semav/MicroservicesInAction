@@ -10,13 +10,10 @@ import semav.organisationsservice.entity.License;
 @Service
 public class LicensingService {
     @Autowired
-    RestTemplate restTemplate;
-
-    @Autowired
     OAuth2RestTemplate oAuth2RestTemplate;
 
     public License[] getLicenses(int organisationId){
-        ResponseEntity<License[]> responseEntity = oAuth2RestTemplate.getForEntity("http://LICENSING-SERVICE/licenses/{organisationId}", License[].class, organisationId);
+        ResponseEntity<License[]> responseEntity = oAuth2RestTemplate.getForEntity("http://licensing-service/licenses/{organisationId}", License[].class, organisationId);
         return responseEntity.getBody();
     }
 }

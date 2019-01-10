@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import semav.uiapp.entity.License;
 import semav.uiapp.entity.Organisation;
 
 @Service
@@ -19,17 +18,34 @@ public class OrganisationsService {
         return responseEntity.getBody();
     }
 
-    @HystrixCommand(fallbackMethod="getNullOrganisations")
+    @HystrixCommand(fallbackMethod="getOrganisationsFallback")
     public Organisation[] getOrganisations(){
         ResponseEntity<Organisation[]> responseEntity = restTemplate.getForEntity("http://ORGANISATIONS-SERVICE/organisations", Organisation[].class);
         return responseEntity.getBody();
     }
 
-    public Organisation[] getNullOrganisations(){
-        return null;
+    @HystrixCommand(fallbackMethod="addNullOrganisations")
+    public Organisation add(Organisation organisation) {
+        return restTemplate.postForObject("http://ORGANISATIONS-SERVICE/organisations", organisation, Organisation.class);
     }
+
+    @HystrixCommand(fallbackMethod="deleteFallback")
+    public void deleteOrganisation(int id) {
+        restTemplate.delete("http://ORGANISATIONS-SERVICE/organisations/{id}", id);
+    }
+
+    public void deleteFallback(int id){}
 
     public Organisation getNullOrganisation(int id){
         return null;
     }
+
+    public Organisation addNullOrganisations(Organisation organisation) {
+        return null;
+    }
+
+    public Organisation[] getOrganisationsFallback(){
+        return null;
+    }
+
 }
