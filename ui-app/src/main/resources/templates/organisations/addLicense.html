@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add new license</title>
+</head>
+<body>
+    <h1>Add new license</h1>
+
+    <form action="#" th:action="@{/organisations/addLicense}" th:object="${license}" method="post">
+
+        <input type="hidden" th:field="*{organisationId}" />
+        <p>Product name: <input type="text" th:field="*{productName}" /></p>
+        <p>License type: <input type="text" th:field="*{licenseType}" /></p>
+
+        <p><input type="submit" value="Submit" />
+    </form>
+    <div>
+        <a th:href="@{/}">Back to list</a>
+    </div>
+</body>
+</html>

@@ -1,16 +1,16 @@
 package semav.uiapp.entity;
 
 public class License {
-    private String id;
-    private String organisationId;
+    private Integer id;
+    private Integer organisationId;
     private String productName;
     private String licenseType;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -30,11 +30,11 @@ public class License {
         this.licenseType = licenseType;
     }
 
-    public String getOrganisationId() {
+    public Integer getOrganisationId() {
         return organisationId;
     }
 
-    public void setOrganisationId(String organisationId) {
+    public void setOrganisationId(Integer organisationId) {
         this.organisationId = organisationId;
     }
 }

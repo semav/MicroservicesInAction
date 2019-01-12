@@ -53,8 +53,23 @@ public class OrganisationsController {
     }
 
     @PostMapping("/organisations/add")
-    public String processAdd(@ModelAttribute("customer") Organisation organisation){
-        Organisation newOrganisation = organisationsService.add(organisation);
+    public String processAdd(@ModelAttribute("organisation") Organisation organisation){
+        Organisation newOrganisation = organisationsService.addOrganisation(organisation);
+        return "redirect:/";
+    }
+
+    @GetMapping("/organisations/addLicense")
+    public String addLicense(@RequestParam(value = "id") int organisationId, Model model){
+        License license = new License();
+        license.setOrganisationId(organisationId);
+        model.addAttribute("license", license);
+
+        return "organisations/addLicense";
+    }
+
+    @PostMapping("/organisations/addLicense")
+    public String processLicense(@ModelAttribute("license") License license){
+        License newLicense = licensingService.addLicense(license);
         return "redirect:/";
     }
 }

@@ -1,6 +1,11 @@
 spring:
   application:
     name: organisations-service
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+    in-memory: false
 security:
   oauth2:
     client:

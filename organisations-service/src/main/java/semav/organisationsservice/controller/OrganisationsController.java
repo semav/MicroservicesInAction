@@ -9,6 +9,7 @@ import semav.organisationsservice.entity.License;
 import semav.organisationsservice.entity.Organisation;
 import semav.organisationsservice.repository.OrganisationRepository;
 import semav.organisationsservice.service.LicensingService;
+import semav.organisationsservice.service.OrganisationsService;
 
 import java.util.Optional;
 
@@ -21,12 +22,15 @@ public class OrganisationsController {
     @Autowired
     LicensingService licensingService;
 
+    @Autowired
+    OrganisationsService organisationsService;
+
     @GetMapping
     public Iterable<Organisation> getOrganisations(){
-        return organisationRepository.findAll();
+        return organisationsService.getOrganisations();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Organisation> getOrganisation(@PathVariable int id){
         Optional<Organisation> organisation = organisationRepository.findById(id);
 
@@ -51,9 +55,7 @@ public class OrganisationsController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code=HttpStatus.NO_CONTENT)
-    public void deleteOrganisation(@PathVariable("id") Integer id) {
-        try {
-            organisationRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {}
+    public void deleteOrganisation(@PathVariable("id") int id) {
+        organisationsService.deleteOrganisation(id);
     }
 }

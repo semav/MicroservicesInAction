@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ui-app
+  template:
+    cache: false
 security:
   oauth2:
     client:

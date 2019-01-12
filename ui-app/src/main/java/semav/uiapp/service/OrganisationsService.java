@@ -25,7 +25,7 @@ public class OrganisationsService {
     }
 
     @HystrixCommand(fallbackMethod="addNullOrganisations")
-    public Organisation add(Organisation organisation) {
+    public Organisation addOrganisation(Organisation organisation) {
         return restTemplate.postForObject("http://ORGANISATIONS-SERVICE/organisations", organisation, Organisation.class);
     }
 

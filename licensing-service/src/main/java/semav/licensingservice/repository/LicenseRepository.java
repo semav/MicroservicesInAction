@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface LicenseRepository extends CrudRepository<License, Integer> {
     List<License> findByOrganisationId(Integer organisationId);
-    //License findByOrganizationIdAndLicenseId(String organizationId, String licenseId);
+    void deleteByOrganisationId(int organisationId);
 }
 
