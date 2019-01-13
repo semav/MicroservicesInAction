@@ -1,6 +1,8 @@
 package semav.uiapp.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,8 @@ import semav.uiapp.entity.Organisation;
 
 @Service
 public class OrganisationsService {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -20,6 +24,9 @@ public class OrganisationsService {
 
     @HystrixCommand(fallbackMethod="getOrganisationsFallback")
     public Organisation[] getOrganisations(){
+
+        log.info("getOrganisations");
+
         ResponseEntity<Organisation[]> responseEntity = restTemplate.getForEntity("http://ORGANISATIONS-SERVICE/organisations", Organisation[].class);
         return responseEntity.getBody();
     }
