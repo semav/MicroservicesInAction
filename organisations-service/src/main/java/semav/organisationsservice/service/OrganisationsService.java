@@ -10,6 +10,8 @@ import semav.organisationsservice.messaging.OrganisationMessage;
 import semav.organisationsservice.messaging.LicensingMessagingService;
 import semav.organisationsservice.repository.OrganisationRepository;
 
+import javax.transaction.Transactional;
+
 @Service
 public class OrganisationsService {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -25,13 +27,14 @@ public class OrganisationsService {
         return organisationRepository.findAll();
     }
 
+    @Transactional
     public void deleteOrganisation(int id) {
         try {
-            organisationRepository.deleteById(id);
-
             OrganisationMessage message = new OrganisationMessage();
             message.setId(id);
             message.setType(OrganisationMessage.Type.Delete);
+
+            organisationRepository.deleteById(id);
             messagingService.send(message);
 
         } catch (EmptyResultDataAccessException e) {}

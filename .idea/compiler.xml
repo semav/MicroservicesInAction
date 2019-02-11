@@ -25,6 +25,7 @@
       <module name="spring-security-sso-auth-server" target="1.8" />
       <module name="spring-security-sso-ui" target="1.8" />
       <module name="ui-app" target="1.8" />
+      <module name="zipkin-server" target="1.8" />
       <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>

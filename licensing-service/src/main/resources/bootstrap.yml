@@ -6,3 +6,5 @@ spring:
     user: admin
     password: admin
     in-memory: false
+  zipkin:
+    baseUrl: http://localhost:9411

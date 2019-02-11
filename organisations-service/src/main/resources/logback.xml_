@@ -1,0 +1,18 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="PAPERTRAIL" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>https://reflectoring.io/tracing-with-spring-cloud-sleuth/</syslogHost>
+        <port>80</port>
+        <facility>USER</facility>
+        <throwableExcluded>true</throwableExcluded>
+    </appender>
+
+    <logger name="asd" level="info" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="PAPERTRAIL"/>
+    </logger>
+</configuration>
+-->
