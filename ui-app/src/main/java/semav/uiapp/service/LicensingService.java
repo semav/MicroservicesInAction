@@ -3,11 +3,9 @@ package semav.uiapp.service;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import semav.uiapp.entity.License;
-import semav.uiapp.entity.Organisation;
 
 @Service
 public class LicensingService {

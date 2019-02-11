@@ -59,7 +59,7 @@ public class OrganisationsController {
 
     @PostMapping("/organisations/add")
     public String processAdd(@ModelAttribute("organisation") Organisation organisation){
-        Organisation newOrganisation = organisationsService.addOrganisation(organisation);
+        organisationsService.addOrganisation(organisation);
         return "redirect:/";
     }
 
@@ -74,7 +74,7 @@ public class OrganisationsController {
 
     @PostMapping("/organisations/addLicense")
     public String processLicense(@ModelAttribute("license") License license){
-        License newLicense = licensingService.addLicense(license);
+        licensingService.addLicense(license);
         return "redirect:/";
     }
 }
