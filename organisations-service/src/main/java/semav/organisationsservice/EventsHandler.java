@@ -17,6 +17,7 @@ public class EventsHandler implements MessageHandler {
         else {
             throw new MessagingException("test exception");
         }*/
+        /*asd*/
 
         System.out.println(message.getPayload());
     }
