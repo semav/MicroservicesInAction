@@ -12,12 +12,14 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.jdbc.JdbcPollingChannelAdapter;
-import org.springframework.messaging.MessageHandler;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+
+import semav.organisationsservice.messaging.EventMapper;
+import semav.organisationsservice.messaging.EventsHandler;
 
 import javax.sql.DataSource;
 
@@ -34,16 +36,16 @@ public class OrganisationsServiceApplication {
     }
 
     @Bean
-    public MessageHandler eventsHandler() {
+    public EventsHandler eventsHandler() {
         return new EventsHandler();
     }
 
-
     @Bean
     public MessageSource<?> eventsInboundAdapter(DataSource dataSource) {
-        JdbcPollingChannelAdapter adapter = new JdbcPollingChannelAdapter(dataSource, "SELECT * FROM events WHERE status = 0;");
-        adapter.setUpdateSql("UPDATE events SET status = 1");
+        JdbcPollingChannelAdapter adapter = new JdbcPollingChannelAdapter(dataSource, "SELECT * FROM event WHERE status = 0;");
+        adapter.setUpdateSql("UPDATE event SET status = 1");
         adapter.setUpdatePerRow(true);
+        adapter.setRowMapper(new EventMapper());
         return adapter;
     }
 
@@ -56,7 +58,6 @@ public class OrganisationsServiceApplication {
                 .handle(eventsHandler())
                 .get();
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(OrganisationsServiceApplication.class, args);

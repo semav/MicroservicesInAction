@@ -27,4 +27,8 @@ public class LicensingMessagingService {
             throw new RuntimeException(e);
         }
     }
+
+	public void send(String message) {
+        jmsTemplate.convertAndSend("licensing", message);
+	}
 }
