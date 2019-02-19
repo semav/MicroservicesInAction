@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.dsl.PollerSpec;
 import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.jdbc.JdbcPollingChannelAdapter;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -57,6 +58,8 @@ public class OrganisationsServiceApplication {
                 .channel("eventsChannel")
                 .handle(eventsHandler())
                 .get();
+
+
     }
 
     public static void main(String[] args) {
