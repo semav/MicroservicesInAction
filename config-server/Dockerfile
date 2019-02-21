@@ -13,7 +13,7 @@ COPY src /build/src
 RUN mvn package -Dmaven.test.skip=true
 
 FROM openjdk:8-jdk-alpine
-#COPY --from=builder /build/target/*.jar app.jar
-ADD --from=builder /build/target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
+COPY --from=builder /build/target/config-server-0.0.1-SNAPSHOT.jar app.jar
+ADD app.jar config-server.jar
 EXPOSE 8888
 ENTRYPOINT ["java", "-jar", "config-server.jar"]
