@@ -1,14 +1,18 @@
-FROM openjdk:8-jdk-alpine as build
-WORKDIR /workspace/app
-
-COPY mvnw .
-COPY pom.xml .
-COPY src src
-
-RUN ./mvnw package -DskipTests
-RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+## BUILD image
+FROM maven:3-jdk-11 as builder
+# create app folder for sources
+RUN mkdir -p /build
+WORKDIR /build
+COPY pom.xml /build
+#Download all required dependencies into one layer
+RUN mvn -B dependency:resolve dependency:resolve-plugins
+#Copy source code
+COPY src /build/src
+# Build application
+RUN mvn package
 
 FROM openjdk:8-jdk-alpine
-ADD /workspace/app/target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
+COPY --from=builder /build/target/*.jar app.jar
+ADD app.jar config-server.jar
 EXPOSE 8888
 ENTRYPOINT ["java", "-jar", "config-server.jar"]
