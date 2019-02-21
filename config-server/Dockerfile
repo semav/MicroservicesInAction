@@ -15,7 +15,7 @@ WORKDIR /build
 #RUN mvn package
 RUN mvn package -Dmaven.test.skip=true
 
-FROM openjdk:openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine
 COPY --from=builder /build/target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
 #ADD app.jar config-server.jar
 EXPOSE 8888
