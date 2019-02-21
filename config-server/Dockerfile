@@ -1,6 +1,10 @@
-FROM openjdk:8
-RUN apk add --no-cache maven
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_TOOL_CHAIN
+COPY pom.xml /tmp/
+COPY src /tmp/src/
+WORKDIR /tmp/
 RUN mvn package
-ADD target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
+
+FROM openjdk:8
+ADD /tmp/target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
 EXPOSE 8888
 ENTRYPOINT ["java", "-jar", "config-server.jar"]
